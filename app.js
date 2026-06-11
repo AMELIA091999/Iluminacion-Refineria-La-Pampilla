@@ -49,8 +49,8 @@ async function cargarLuminarias() {
     data.forEach(poste => {
 
         let marcador = L.marker([
-            poste.latitud,
-            poste.longitud
+            poste.Latitud,
+            poste.Longitud
         ]).addTo(mapa);
 
         marcador.on("click", () => {
@@ -65,7 +65,7 @@ async function cargarLuminarias() {
                 poste.tipo_luminaria || "";
 
             document.getElementById("funcionamiento").value =
-                poste.estado || "";
+                poste.Estado || "";
 
             document.getElementById("tipoFalla").value =
                 poste.tipo_falla || "";
