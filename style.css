@@ -1,0 +1,22 @@
+body{
+    font-family: Arial;
+    margin:20px;
+}
+
+#map{
+    height:600px;
+}
+
+#contenedorFormulario{
+    display:none;
+}
+
+.tabs{
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:8px;
+    margin-bottom:10px;
+}

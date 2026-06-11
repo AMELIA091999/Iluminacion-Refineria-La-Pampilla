@@ -1,0 +1,20 @@
+[
+    {
+        "codigo":"P001",
+        "lat":-12.061,
+        "lng":-77.045,
+        "tipoPoste":"Metalico",
+        "tipoLuminaria":"LED 150W",
+        "funcionamiento":"Operativo",
+        "tipoFalla":""
+    },
+    {
+        "codigo":"P002",
+        "lat":-12.063,
+        "lng":-77.047,
+        "tipoPoste":"Concreto",
+        "tipoLuminaria":"LED 200W",
+        "funcionamiento":"Falla",
+        "tipoFalla":"Driver"
+    }
+]
