@@ -4,7 +4,7 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
   "sb_publishable_eXj1eu9n9xHIVSWn6365rw_KLxjGBRe";
 
-const supabase = window.supabase.createClient(
+const clienteSupabase = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
@@ -34,7 +34,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 async function cargarLuminarias() {
 
-    const { data, error } = await supabase
+    const { data, error } = await clienteSupabase
         .from("Luminarias")
         .select("*");
 
