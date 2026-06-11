@@ -38,7 +38,6 @@ async function cargarLuminarias() {
         .from("Luminarias")
         .select("*");
     
-    
     if (error) {
         console.error(error);
         return;
@@ -46,6 +45,11 @@ async function cargarLuminarias() {
 
     data.forEach(poste => {
 
+        console.log("Creando marcador:", poste);
+        console.log("Latitud:", poste.latitud);
+        console.log("Longitud:", poste.longitud);
+
+        
         let marcador = L.marker([
             poste.latitud,
             poste.longitud
