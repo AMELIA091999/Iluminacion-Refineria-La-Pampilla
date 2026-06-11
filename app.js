@@ -38,8 +38,7 @@ async function cargarLuminarias() {
         .from("Luminarias")
         .select("*");
     
-    console.log(data); 
-
+    
     if (error) {
         console.error(error);
         return;
