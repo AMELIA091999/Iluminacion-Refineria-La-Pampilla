@@ -38,7 +38,7 @@ async function cargarLuminarias() {
         .from("Luminarias")
         .select("*");
 
-    alert("LLEGO AQUI");
+    //alert("LLEGO AQUI");
     console.log(data); 
 
     if (error) {
