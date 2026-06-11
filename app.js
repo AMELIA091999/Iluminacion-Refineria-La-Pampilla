@@ -1,3 +1,15 @@
+const SUPABASE_URL =
+  "https://ezkgqclkwloebgxkdkns.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_eXj1eu9n9xHIVSWn6365rw_KLxjGBRe";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
 let mapa;
 
 function mostrarMapa() {
@@ -20,33 +32,40 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 22
 }).addTo(mapa);
 
-fetch("luminarias.json")
-.then(res => res.json())
-.then(datos => {
+async function cargarLuminarias() {
 
-    datos.forEach(poste => {
+    const { data, error } = await supabase
+        .from("Luminarias")
+        .select("*");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    data.forEach(poste => {
 
         let marcador = L.marker([
-            poste.lat,
-            poste.lng
+            poste.latitud,
+            poste.longitud
         ]).addTo(mapa);
 
         marcador.on("click", () => {
 
             document.getElementById("codigo").value =
-                poste.codigo;
+                poste.codigo || "";
 
             document.getElementById("tipoPoste").value =
-                poste.tipoPoste;
+                poste.tipo_poste || "";
 
             document.getElementById("tipoLuminaria").value =
-                poste.tipoLuminaria;
+                poste.tipo_luminaria || "";
 
             document.getElementById("funcionamiento").value =
-                poste.funcionamiento;
+                poste.funcionamiento || "";
 
             document.getElementById("tipoFalla").value =
-                poste.tipoFalla;
+                poste.tipo_falla || "";
 
             mostrarFormulario();
 
@@ -54,4 +73,6 @@ fetch("luminarias.json")
 
     });
 
-});
+}
+
+cargarLuminarias();
