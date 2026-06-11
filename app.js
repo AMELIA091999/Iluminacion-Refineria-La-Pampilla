@@ -37,8 +37,7 @@ async function cargarLuminarias() {
     const { data, error } = await clienteSupabase
         .from("Luminarias")
         .select("*");
-
-    //alert("LLEGO AQUI");
+    
     console.log(data); 
 
     if (error) {
