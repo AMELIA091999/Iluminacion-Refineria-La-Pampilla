@@ -57,21 +57,6 @@ async function cargarLuminarias() {
 
         marcador.on("click", () => {
 
-            document.getElementById("codigo").value =
-                poste.codigo || "";
-
-            document.getElementById("tipoPoste").value =
-                poste.tipo_poste || "";
-
-            document.getElementById("tipoLuminaria").value =
-                poste.tipo_luminaria || "";
-
-            document.getElementById("funcionamiento").value =
-                poste.estado || "";
-
-            document.getElementById("tipoFalla").value =
-                poste.tipo_falla || "";
-
             document.getElementById("infoCodigo").textContent =
             poste.codigo || "-";
 
@@ -92,9 +77,6 @@ async function cargarLuminarias() {
 
             document.getElementById("infoUbicacion").textContent =
             poste.ubicacion || "-";
-
-            //mostrarFormulario();
-
 
         });
 
