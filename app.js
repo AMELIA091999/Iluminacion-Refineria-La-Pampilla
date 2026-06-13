@@ -72,7 +72,29 @@ async function cargarLuminarias() {
             document.getElementById("tipoFalla").value =
                 poste.tipo_falla || "";
 
-            mostrarFormulario();
+            document.getElementById("infoCodigo").textContent =
+            poste.codigo || "-";
+
+            document.getElementById("infoEstado").textContent =
+            poste.estado || "-";
+
+            document.getElementById("infoTipo").textContent =
+            poste.tipo_luminaria || "-";
+
+            document.getElementById("infoPoste").textContent =
+            poste.tipo_poste || "-";
+
+            document.getElementById("infoPotencia").textContent =
+            poste.potencia || "-";
+
+            document.getElementById("infoAltura").textContent =
+            poste.altura || "-";
+
+            document.getElementById("infoUbicacion").textContent =
+            poste.ubicacion || "-";
+
+            //mostrarFormulario();
+
 
         });
 
