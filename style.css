@@ -95,3 +95,89 @@ body {
 #map{
     height:700px;
 }
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px){
+
+    #contenedorMapa{
+        flex-direction: column;
+    }
+
+    #panelMapa{
+        width:100%;
+    }
+
+    #panelInfo{
+        width:100%;
+    }
+
+    #map{
+        height:500px;
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width: 768px){
+
+    body{
+        margin:10px;
+    }
+
+    .logo-container{
+        flex-direction: column;
+        text-align:center;
+    }
+
+    .logo-repsol{
+        height:40px;
+    }
+
+    .sistema{
+        font-size:18px;
+    }
+
+    .titulo-principal{
+        font-size:32px;
+        text-align:center;
+    }
+
+    #contenedorMapa{
+        flex-direction: column;
+    }
+
+    #panelMapa{
+        width:100%;
+    }
+
+    #panelInfo{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    #map{
+        height:400px;
+    }
+
+    .tabs{
+        display:flex;
+        justify-content:center;
+        gap:10px;
+    }
+
+    button{
+        padding:10px 15px;
+        font-size:16px;
+    }
+
+    input,
+    select,
+    textarea{
+        width:100%;
+        box-sizing:border-box;
+    }
+}
