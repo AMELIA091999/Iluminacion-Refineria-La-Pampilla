@@ -14,8 +14,12 @@ let mapa;
 
 function mostrarMapa() {
 
-    document.getElementById("contenedorMapa").style.display = "block";
+    document.getElementById("contenedorMapa").style.display = "flex";
     document.getElementById("contenedorFormulario").style.display = "none";
+
+    setTimeout(() => {
+        mapa.invalidateSize();
+    }, 100);
 
 }
 
