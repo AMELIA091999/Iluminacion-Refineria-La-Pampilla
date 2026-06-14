@@ -146,8 +146,13 @@ async function guardarNuevoPoste(){
         }]);
 
     if(error){
-        alert("Error al guardar");
         console.error(error);
+
+        alert(
+            "Error: " +
+            error.message
+        );
+
         return;
     }
 
