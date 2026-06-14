@@ -188,3 +188,8 @@ body {
         box-sizing:border-box;
     }
 }
+
+#contenedorNuevo{
+    display:none;
+    max-width:700px;
+}

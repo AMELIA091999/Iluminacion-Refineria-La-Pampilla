@@ -33,8 +33,9 @@
     </h2>
 
     <div class="tabs">
-        <button onclick="mostrarMapa()">Mapa</button>
-        <button onclick="mostrarFormulario()">Edición</button>
+    <button onclick="mostrarMapa()">Mapa</button>
+    <button onclick="mostrarFormulario()">Edición</button>
+    <button onclick="mostrarNuevo()">Nuevo</button>
     </div>
 
     <div id="contenedorMapa">
@@ -57,9 +58,7 @@
         <img id="infoFoto"
              style="width:100%; display:none; margin-top:10px;">
     </div>
-
     </div>
-    
     
 
     <div id="contenedorFormulario">
@@ -82,6 +81,48 @@
         <input id="tipoFalla">
 
         <button>Guardar</button>
+
+    </div>
+
+    <!-- NUEVA SECCIÓN -->
+
+    <div id="contenedorNuevo">
+    <h2>Nueva luminaria</h2>
+
+    <label>Código</label>
+    <input id="nuevoCodigo">
+
+    <label>Latitud</label>
+    <input id="nuevoLatitud">
+
+    <label>Longitud</label>
+    <input id="nuevoLongitud">
+
+    <button onclick="activarSeleccionMapa()">
+    Seleccionar ubicación en mapa
+    </button>
+
+    <label>Estado</label>
+    <input id="nuevoEstado">
+
+    <label>Tipo poste</label>
+    <input id="nuevoTipoPoste">
+
+    <label>Tipo luminaria</label>
+    <input id="nuevoTipoLuminaria">
+
+    <label>Potencia</label>
+    <input id="nuevoPotencia">
+
+    <label>Altura</label>
+    <input id="nuevoAltura">
+
+    <label>Ubicación</label>
+    <input id="nuevoUbicacion">
+
+    <button onclick="guardarNuevoPoste()">
+        Guardar
+    </button>
 
     </div>
 

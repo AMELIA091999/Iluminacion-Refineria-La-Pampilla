@@ -12,22 +12,31 @@ const clienteSupabase = window.supabase.createClient(
 
 let mapa;
 
+let seleccionandoUbicacion = false;
+
 function mostrarMapa() {
 
     document.getElementById("contenedorMapa").style.display = "flex";
     document.getElementById("contenedorFormulario").style.display = "none";
+    document.getElementById("contenedorNuevo").style.display = "none";
 
     setTimeout(() => {
         mapa.invalidateSize();
     }, 100);
-
 }
 
 function mostrarFormulario() {
 
     document.getElementById("contenedorMapa").style.display = "none";
     document.getElementById("contenedorFormulario").style.display = "block";
+    document.getElementById("contenedorNuevo").style.display = "none";
+}
 
+function mostrarNuevo() {
+
+    document.getElementById("contenedorMapa").style.display = "none";
+    document.getElementById("contenedorFormulario").style.display = "none";
+    document.getElementById("contenedorNuevo").style.display = "block";
 }
 
 mapa = L.map('map').setView([-12.061, -77.045], 15);
@@ -35,6 +44,36 @@ mapa = L.map('map').setView([-12.061, -77.045], 15);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 22
 }).addTo(mapa);
+
+
+mapa.on("click", function(e){
+
+    if(!seleccionandoUbicacion){
+        return;
+    }
+
+    document.getElementById("nuevoLatitud").value =
+        e.latlng.lat.toFixed(6);
+
+    document.getElementById("nuevoLongitud").value =
+        e.latlng.lng.toFixed(6);
+
+    seleccionandoUbicacion = false;
+
+    mostrarNuevo();
+
+});
+
+
+function activarSeleccionMapa(){
+
+    mostrarMapa();
+
+    seleccionandoUbicacion = true;
+
+    alert("Haz clic sobre el mapa para seleccionar la ubicación");
+}
+
 
 async function cargarLuminarias() {
 
@@ -89,3 +128,31 @@ async function cargarLuminarias() {
 }
 
 cargarLuminarias();
+
+async function guardarNuevoPoste(){
+
+    const { error } = await clienteSupabase
+        .from("Luminarias")
+        .insert([{
+            codigo: document.getElementById("nuevoCodigo").value,
+            latitud: parseFloat(document.getElementById("nuevoLatitud").value),
+            longitud: parseFloat(document.getElementById("nuevoLongitud").value),
+            estado: document.getElementById("nuevoEstado").value,
+            tipo_poste: document.getElementById("nuevoTipoPoste").value,
+            tipo_luminaria: document.getElementById("nuevoTipoLuminaria").value,
+            potencia: document.getElementById("nuevoPotencia").value,
+            altura: document.getElementById("nuevoAltura").value,
+            ubicacion: document.getElementById("nuevoUbicacion").value
+        }]);
+
+    if(error){
+        alert("Error al guardar");
+        console.error(error);
+        return;
+    }
+
+    alert("Luminaria registrada");
+
+    location.reload();
+}
+
