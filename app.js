@@ -133,16 +133,39 @@ async function guardarNuevoPoste(){
 
     const { error } = await clienteSupabase
         .from("Luminarias")
+
         .insert([{
-            codigo: document.getElementById("nuevoCodigo").value,
-            latitud: parseFloat(document.getElementById("nuevoLatitud").value),
-            longitud: parseFloat(document.getElementById("nuevoLongitud").value),
-            estado: document.getElementById("nuevoEstado").value,
-            tipo_poste: document.getElementById("nuevoTipoPoste").value,
-            tipo_luminaria: document.getElementById("nuevoTipoLuminaria").value,
-            potencia: document.getElementById("nuevoPotencia").value,
-            altura: document.getElementById("nuevoAltura").value,
-            ubicacion: document.getElementById("nuevoUbicacion").value
+        codigo: document.getElementById("nuevoCodigo").value,
+
+        latitud: parseFloat(
+            document.getElementById("nuevoLatitud").value
+        ),
+
+        longitud: parseFloat(
+            document.getElementById("nuevoLongitud").value
+        ),
+
+        estado:
+            document.getElementById("nuevoEstado").value || null,
+
+        tipo_poste:
+            document.getElementById("nuevoTipoPoste").value || null,
+
+        tipo_luminaria:
+            document.getElementById("nuevoTipoLuminaria").value || null,
+
+        potencia:
+            document.getElementById("nuevoPotencia").value
+            ? parseInt(document.getElementById("nuevoPotencia").value)
+            : null,
+
+        altura:
+            document.getElementById("nuevoAltura").value
+            ? parseInt(document.getElementById("nuevoAltura").value)
+            : null,
+
+        ubicacion:
+            document.getElementById("nuevoUbicacion").value || null
         }]);
 
     if(error){
