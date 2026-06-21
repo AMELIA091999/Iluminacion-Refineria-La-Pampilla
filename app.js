@@ -41,10 +41,28 @@ function mostrarNuevo() {
 
 mapa = L.map('map').setView([-12.061, -77.045], 15);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 22
-}).addTo(mapa);
+const capaMapa = L.tileLayer(
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    {
+        maxZoom: 22
+    }
+);
 
+const capaSatelite = L.tileLayer(
+    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    {
+        maxZoom: 22
+    }
+);
+
+capaMapa.addTo(mapa);
+
+L.control.layers(
+    {
+        "Mapa": capaMapa,
+        "Satélite": capaSatelite
+    }
+).addTo(mapa);
 
 mapa.on("click", function(e){
 
