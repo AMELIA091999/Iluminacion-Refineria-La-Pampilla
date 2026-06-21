@@ -147,9 +147,6 @@ cargarLuminarias();
 async function guardarNuevoPoste(){
 
     const { data, error } = await clienteSupabase
-    console.log("DATA:", data);
-    console.log("ERROR:", error);
-
 
         .from("Luminarias")
 
