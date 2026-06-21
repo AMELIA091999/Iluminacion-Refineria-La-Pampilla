@@ -159,41 +159,34 @@ cargarLuminarias();
 async function guardarNuevoPoste(){
 
     const { data, error } = await clienteSupabase
-
         .from("Luminarias")
-
         .insert([{
-        codigo: document.getElementById("nuevoCodigo").value,
+            codigo: document.getElementById("nuevoCodigo").value,
 
-        latitud: parseFloat(
-            document.getElementById("nuevoLatitud").value
-        ),
+            latitud: parseFloat(
+                document.getElementById("nuevoLatitud").value
+            ),
 
-        longitud: parseFloat(
-            document.getElementById("nuevoLongitud").value
-        ),
+            longitud: parseFloat(
+                document.getElementById("nuevoLongitud").value
+            ),
 
-        estado:
-            document.getElementById("nuevoEstado").value || null,
+            estado: document.getElementById("nuevoEstado").value || null,
 
-        tipo_poste:
-            document.getElementById("nuevoTipoPoste").value || null,
+            tipo_poste: document.getElementById("nuevoTipoPoste").value || null,
 
-        tipo_luminaria:
-            document.getElementById("nuevoTipoLuminaria").value || null,
+            tipo_luminaria: document.getElementById("nuevoTipoLuminaria").value || null,
 
-        potencia:
-            document.getElementById("nuevoPotencia").value
-            ? parseInt(document.getElementById("nuevoPotencia").value)
-            : null,
+            potencia: document.getElementById("nuevoPotencia").value
+                ? parseInt(document.getElementById("nuevoPotencia").value)
+                : null,
 
-        altura:
-            document.getElementById("nuevoAltura").value
-            ? parseInt(document.getElementById("nuevoAltura").value)
-            : null,
+            altura: document.getElementById("nuevoAltura").value
+                ? parseInt(document.getElementById("nuevoAltura").value)
+                : null,
 
-        ubicacion:
-            document.getElementById("nuevoUbicacion").value || null
+            ubicacion: document.getElementById("nuevoUbicacion").value || null
+
         }]);
 
     console.log("DATA:", data);
@@ -201,17 +194,10 @@ async function guardarNuevoPoste(){
 
     if(error){
         console.error(error);
-
-        alert(
-            "Error: " +
-            error.message
-        );
-
+        alert("Error: " + error.message);
         return;
     }
 
     alert("Luminaria registrada");
-
     location.reload();
 }
-
