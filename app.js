@@ -162,7 +162,6 @@ async function guardarNuevoPoste(){
 
         .from("Luminarias")
 
-       
         .insert([{
         codigo: document.getElementById("nuevoCodigo").value,
 
