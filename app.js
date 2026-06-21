@@ -120,19 +120,31 @@ async function cargarLuminarias() {
 
             document.getElementById("infoUbicacion").textContent =
             poste.ubicacion || "-";
-
         });
-
     });
-
 }
 
 cargarLuminarias();
 
 async function guardarNuevoPoste(){
 
-    const { error } = await clienteSupabase
+    const { data, error } = await clienteSupabase
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
+
+
         .from("Luminarias")
+
+        console.log("codigo:", document.getElementById("nuevoCodigo").value);
+        console.log("latitud:", document.getElementById("nuevoLatitud").value);
+        console.log("longitud:", document.getElementById("nuevoLongitud").value);
+        console.log("estado:", document.getElementById("nuevoEstado").value);
+        console.log("tipo_poste:", document.getElementById("nuevoTipoPoste").value);
+        console.log("tipo_luminaria:", document.getElementById("nuevoTipoLuminaria").value);
+        console.log("potencia:", document.getElementById("nuevoPotencia").value);
+        console.log("altura:", document.getElementById("nuevoAltura").value);
+        console.log("ubicacion:", document.getElementById("nuevoUbicacion").value);
+
 
         .insert([{
         codigo: document.getElementById("nuevoCodigo").value,
@@ -167,6 +179,9 @@ async function guardarNuevoPoste(){
         ubicacion:
             document.getElementById("nuevoUbicacion").value || null
         }]);
+
+    console.log("DATA:", data);
+    console.log("ERROR:", error);
 
     if(error){
         console.error(error);
