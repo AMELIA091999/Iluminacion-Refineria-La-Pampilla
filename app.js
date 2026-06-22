@@ -63,7 +63,12 @@ function mostrarMiUbicacion() {
 
         function(error) {
             console.error(error);
-            alert("No se pudo obtener la ubicación");
+            alert(
+                "Error GPS: " +
+                error.code +
+                " - " +
+                error.message
+            );
         }
 
     );
