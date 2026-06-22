@@ -39,6 +39,23 @@ function mostrarNuevo() {
     document.getElementById("contenedorNuevo").style.display = "block";
 }
 
+const iconoUsuario = L.divIcon({
+    className: "ubicacion-usuario",
+    html: `
+        <div style="
+            width:18px;
+            height:18px;
+            background:#0078ff;
+            border:3px solid white;
+            border-radius:50%;
+            box-shadow:0 0 10px rgba(0,120,255,0.7);
+        "></div>
+    `,
+    iconSize: [18,18],
+    iconAnchor: [9,9]
+});
+
+
 function mostrarMiUbicacion() {
 
     if (!navigator.geolocation) {
@@ -53,7 +70,9 @@ function mostrarMiUbicacion() {
             const lat = posicion.coords.latitude;
             const lng = posicion.coords.longitude;
 
-            L.marker([lat, lng])
+            L.marker([lat, lng], {
+                icon: iconoUsuario
+            })
                 .addTo(mapa)
                 .bindPopup("Mi ubicación")
                 .openPopup();
