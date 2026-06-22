@@ -39,6 +39,36 @@ function mostrarNuevo() {
     document.getElementById("contenedorNuevo").style.display = "block";
 }
 
+function mostrarMiUbicacion() {
+
+    if (!navigator.geolocation) {
+        alert("Tu navegador no soporta geolocalización");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(posicion) {
+
+            const lat = posicion.coords.latitude;
+            const lng = posicion.coords.longitude;
+
+            L.marker([lat, lng])
+                .addTo(mapa)
+                .bindPopup("Mi ubicación")
+                .openPopup();
+
+            mapa.setView([lat, lng], 18);
+        },
+
+        function(error) {
+            console.error(error);
+            alert("No se pudo obtener la ubicación");
+        }
+
+    );
+}
+
 mapa = L.map('map').setView([-12.061, -77.045], 15);
 
 const capaMapa = L.tileLayer(
